@@ -83,12 +83,14 @@ public class JobTest {
         Job job = new Job(
                 "Product tester",
                 new Employer(""),
-                new Location(),
+                new Location("      "),
                 new PositionType(" "),
                 new CoreCompetency("Persistence")
         );
 
-        String expectedOutput = "\nID: 5\n" +
+        String jobId = String.valueOf(job.getId());
+
+        String expectedOutput = "\nID: "+ jobId +"\n" +
                 "Name: Product tester\n" +
                 "Employer: Data not available\n" +
                 "Location: Data not available\n" +
