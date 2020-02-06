@@ -86,13 +86,22 @@ public class Job {
 
     @Override
     public String toString() {
-        return "\n" +
-                "ID: " + id + "\n" +
-                "Name: " + name + "\n" +
-                "Employer: " + employer + "\n" +
-                "Location: " + location + "\n" +
-                "Position Type: " + positionType + "\n" +
-                "Core Competency: " + coreCompetency +
-                "\n" ;
+        String emptyField = "Data not available";
+        String output;
+
+        if(name == null && employer == null && location == null && positionType == null && coreCompetency == null){
+            return "OOPS! This job does not seem to exist.";
+        } else {
+            output = "\n" +
+                    "ID: " + id + "\n" +
+                    "Name: " + name + "\n" +
+                    "Employer: " + employer + "\n" +
+                    "Location: " + location + "\n" +
+                    "Position Type: " + positionType + "\n" +
+                    "Core Competency: " + coreCompetency +
+                    "\n";
+            output = output.replaceAll(":( \\s*| null)\n",": "+ emptyField+"\n");
+            return output;
+        }
     }
 }

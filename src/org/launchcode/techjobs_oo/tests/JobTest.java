@@ -71,4 +71,31 @@ public class JobTest {
     public void testJobToStringFormat(){
         assertTrue(Pattern.matches("\n(.*\n){6}" , jobThree.toString() ) );
     }
+
+    @Test
+    public void testToStringReturnsNotExists(){
+        Job job = new Job();
+        assertEquals("OOPS! This job does not seem to exist.",job.toString());
+    }
+
+    @Test
+    public void testToStringReturnsDataNotAvailable(){
+        Job job = new Job(
+                "Product tester",
+                new Employer(""),
+                new Location(),
+                new PositionType(" "),
+                new CoreCompetency("Persistence")
+        );
+
+        String expectedOutput = "\nID: 5\n" +
+                "Name: Product tester\n" +
+                "Employer: Data not available\n" +
+                "Location: Data not available\n" +
+                "Position Type: Data not available\n" +
+                "Core Competency: Persistence\n";
+
+        assertEquals(expectedOutput,job.toString());
+    }
+
 }
